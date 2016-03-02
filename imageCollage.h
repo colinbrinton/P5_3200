@@ -52,11 +52,14 @@ protected:
 	int displayCount = 0;
 	int replaceCount = 0;
 
+	void addID(int newID);
+
 public:
 	imageCollage(vector<int> col = NULL_COL);
 	~imageCollage();
 
 	imageCollage operator+(imageCollage& collage);
+	imageCollage imageCollage::operator+(int addID);
 
 	int getDisplayCount();
 	int getReplaceCount();

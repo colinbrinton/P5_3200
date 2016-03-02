@@ -103,6 +103,11 @@ bool imageCollage::replaceImage(int imgID)
 	return false;
 }
 
+void imageCollage::addID(int newID)
+{
+	collage.push_back(newID);
+}
+
 vector<int> imageCollage::getDisplay()
 {
 	if (active)
@@ -136,5 +141,12 @@ imageCollage imageCollage::operator+(imageCollage& collage)
 		concatCollage.push_back(collage.getDisplay()[index]);
 
 	imageCollage sumImgCol(concatCollage);
+	return sumImgCol;
+}
+
+imageCollage imageCollage::operator+(int addID)
+{
+	imageCollage sumImgCol(*this);
+	sumImgCol.addID(addID);
 	return sumImgCol;
 }
