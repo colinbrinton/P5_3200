@@ -56,6 +56,8 @@ public:
 	imageCollage(vector<int> col = NULL_COL);
 	~imageCollage();
 
+	imageCollage operator+(imageCollage& collage);
+
 	int getDisplayCount();
 	int getReplaceCount();
 	void toggleActive();

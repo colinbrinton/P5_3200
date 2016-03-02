@@ -126,3 +126,15 @@ bool imageCollage::isActive()
 {
 	return active;
 }
+
+imageCollage imageCollage::operator+(imageCollage& collage)
+{
+	int newSize = collage.displaySize + this->displaySize;
+	vector<int> concatCollage = this->getDisplay();
+
+	for (int index = 0; index < collage.displaySize; index++)
+		concatCollage.push_back(collage.getDisplay()[index]);
+
+	imageCollage sumImgCol(concatCollage);
+	return sumImgCol;
+}
