@@ -128,3 +128,22 @@ bitCollage bitCollage::operator+(int addID)
 	sumImgCol.addID(addID);
 	return sumImgCol;
 }
+
+bitCollage bitCollage::operator+=(bitCollage& addCollage)
+{
+	for (int index = 0; index < addCollage.displaySize; index++)
+		collage.push_back(addCollage.getFullDisplay()[index]);
+
+	return *this;
+}
+
+bitCollage bitCollage::operator+(const imageCollage& collage)
+{
+	vector<int> concatCollage = this->getFullDisplay();
+
+	for (int index = 0; index < collage.getDisplaySize(); index++)
+		concatCollage.push_back(collage.getDisplay()[index]);
+
+	bitCollage sumImgCol(concatCollage);
+	return sumImgCol;
+}

@@ -31,6 +31,7 @@
 */
 
 #pragma once
+
 #include <vector>
 #include <cstdlib>
 #include <ctime>
@@ -60,10 +61,14 @@ public:
 
 	imageCollage operator+(imageCollage& collage);
 	imageCollage operator+(int addID);
+	imageCollage operator+=(imageCollage& collage);
+	bool operator==(imageCollage& compare);
+	bool operator!=(imageCollage& compare) { return !(*this == compare); }
 
 	int getDisplayCount();
 	int getReplaceCount();
 	void toggleActive();
+	const int getDisplaySize();
 	bool imgQuery(int imgID);
 	virtual bool replaceImage(int imgID);
 	virtual vector<int> getDisplay();

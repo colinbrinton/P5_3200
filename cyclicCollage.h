@@ -31,8 +31,11 @@ public:
 
 	cyclicCollage operator+(cyclicCollage& collage);
 	cyclicCollage operator+(int addID);
+	cyclicCollage operator+=(cyclicCollage& addCollage);
+	cyclicCollage operator+(imageCollage& collage);
 
 	bool replaceImage(int imgID) { return false; }
 	vector<int> getDisplay();
+	int getShiftValue();
 };
 

@@ -32,6 +32,8 @@ public:
 
 	bitCollage operator+(bitCollage& collage);
 	bitCollage operator+(int addID);
+	bitCollage operator+=(bitCollage& addCollage);
+	bitCollage operator+(imageCollage& collage);
 
 	vector<int> getDisplay();
 	bool replaceImage(int imgID);

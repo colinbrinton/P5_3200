@@ -21,7 +21,7 @@ int main()
 
 	imageCollage testCollage1(testDisplay1);
 	imageCollage testCollage2(testDisplay2);
-
+	
 	imageCollage sumCollage = testCollage1 + testCollage2;
 	imageCollage sumCollage2 = testCollage2 + testCollage1;
 
@@ -45,15 +45,24 @@ int main()
 
 	displayCollage(intCollage2.getDisplay());
 
+	cout << endl << endl;
+
+	vector<int> testDisplay3 = { 9, 9, 9, 9 };
+	imageCollage testCollage4(testDisplay3);
+
+	testCollage1 += testCollage4;
+
+	displayCollage(testCollage1.getDisplay());
+
 	//Cyclic
 	cout << endl << "CYCLIC:";
 	cout << endl << endl;
 
-	cyclicCollage cyclicCollage1(testDisplay1);
-	cyclicCollage cyclicCollage2(testDisplay2);
+	cyclicCollage testCyclic1(testDisplay1);
+	cyclicCollage testCyclic2(testDisplay2);
 
-	cyclicCollage sumCyclic = cyclicCollage1 + cyclicCollage2;
-	cyclicCollage sumCyclic2 = cyclicCollage2 + cyclicCollage1;
+	cyclicCollage sumCyclic = testCyclic1 + testCyclic2;
+	cyclicCollage sumCyclic2 = testCyclic2 + testCyclic1;
 
 	displayCollage(sumCyclic.getOriDisplay());
 
@@ -75,6 +84,14 @@ int main()
 	cout << endl << endl;
 
 	displayCollage(intCyclic2.getOriDisplay());
+
+	cout << endl << endl;
+
+	cyclicCollage testCyclic4(testDisplay3);
+
+	testCyclic1 += testCyclic4;
+
+	displayCollage(testCyclic1.getOriDisplay());
 
 	//Bit
 	cout << endl << "BIT:";
@@ -107,6 +124,33 @@ int main()
 
 	displayCollage(intBit2.getFullDisplay());
 
+	cout << endl << endl;
+
+	bitCollage testBit4(testDisplay3);
+
+	testBit1 += testBit4;
+
+	displayCollage(testBit1.getFullDisplay());
+
+	//Mixed Mode
+	cout << endl << "MIXED MODE: ";
+
+	//cyclicCollage testCyclic5 = testCollage1 + testCyclic2;
+	cyclicCollage testCyclic6 = testCyclic2 + testCollage1;
+
+	//cout << endl << endl;
+
+	//displayCollage(testCyclic5.getOriDisplay());
+
+	cout << endl << endl;
+
+	displayCollage(testCyclic6.getOriDisplay());
+
+	bitCollage testBit6 = testBit2 + testCollage1;
+
+	cout << endl << endl;
+
+	displayCollage(testBit6.getFullDisplay());
 
 	cin.get();
 

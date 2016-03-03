@@ -132,9 +132,14 @@ bool imageCollage::isActive()
 	return active;
 }
 
+const int imageCollage::getDisplaySize()
+{
+	return displaySize;
+}
+
 imageCollage imageCollage::operator+(imageCollage& collage)
 {
-	int newSize = collage.displaySize + this->displaySize;
+	//int newSize = collage.displaySize + this->displaySize;
 	vector<int> concatCollage = this->getDisplay();
 
 	for (int index = 0; index < collage.displaySize; index++)
@@ -149,4 +154,38 @@ imageCollage imageCollage::operator+(int addID)
 	imageCollage sumImgCol(*this);
 	sumImgCol.addID(addID);
 	return sumImgCol;
+}
+
+imageCollage imageCollage::operator+=(imageCollage& addCollage)
+{
+	for (int index = 0; index < addCollage.displaySize; index++)
+		collage.push_back(addCollage.getDisplay()[index]);
+
+	return *this;
+}
+
+/*cyclicCollage imageCollage::operator+(cyclicCollage& collage)
+{
+	//int newSize = collage.displaySize + this->displaySize;
+	vector<int> concatCollage = this->getDisplay();
+
+	cyclicCollage castCyclic(concatCollage, collage.getShiftValue());
+
+	cyclicCollage sumCycCol = castCyclic + collage;
+
+	return sumCycCol;
+}*/
+
+bool imageCollage::operator==(imageCollage& compare)
+{
+	if (compare.getDisplaySize != this->getDisplaySize)
+		return false;
+
+	for (int index = 0; index < compare.getDisplaySize(); index++)
+	{
+		if (!(find(collage.begin(), collage.end(), compare.getDisplay()[index]) != collage.end()))
+			return false;
+	}
+
+	return true;
 }

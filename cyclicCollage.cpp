@@ -51,6 +51,11 @@ vector<int> cyclicCollage::getDisplay()
 	}
 }
 
+int cyclicCollage::getShiftValue()
+{
+	return shift;
+}
+
 cyclicCollage cyclicCollage::operator+(cyclicCollage& collage)
 {
 	int newSize = collage.displaySize + this->displaySize;
@@ -77,5 +82,24 @@ cyclicCollage cyclicCollage::operator+(int addID)
 {
 	cyclicCollage sumImgCol(*this);
 	sumImgCol.addID(addID);
+	return sumImgCol;
+}
+
+cyclicCollage cyclicCollage::operator+=(cyclicCollage& addCollage)
+{
+	for (int index = 0; index < addCollage.displaySize; index++)
+		collage.push_back(addCollage.getOriDisplay()[index]);
+
+	return *this;
+}
+
+cyclicCollage cyclicCollage::operator+(imageCollage& collage)
+{
+	vector<int> concatCollage = this->getOriDisplay();
+
+	for (int index = 0; index < collage.getDisplaySize(); index++)
+		concatCollage.push_back(collage.getDisplay()[index]);
+
+	cyclicCollage sumImgCol(concatCollage, this->shift);
 	return sumImgCol;
 }
