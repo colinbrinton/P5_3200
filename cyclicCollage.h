@@ -27,6 +27,11 @@ public:
 	cyclicCollage(vector<int> col = NULL_COL, int shft = DEFAUL_SHIFT) : imageCollage(col), shift(shft) {}
 	~cyclicCollage();
 
+	vector<int> getOriDisplay();
+
+	cyclicCollage operator+(cyclicCollage& collage);
+	cyclicCollage operator+(int addID);
+
 	bool replaceImage(int imgID) { return false; }
 	vector<int> getDisplay();
 };

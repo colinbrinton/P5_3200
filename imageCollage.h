@@ -59,7 +59,7 @@ public:
 	~imageCollage();
 
 	imageCollage operator+(imageCollage& collage);
-	imageCollage imageCollage::operator+(int addID);
+	imageCollage operator+(int addID);
 
 	int getDisplayCount();
 	int getReplaceCount();

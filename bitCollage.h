@@ -21,9 +21,17 @@ class bitCollage : public imageCollage
 	const static int MIN_OMIT = 1;
 	const static int MAX_OMIT = 4;
 
+	//vector<int> getFullDisplay();
+
 public:
+
+	vector<int> getFullDisplay();
+
 	bitCollage(vector<int> col = NULL_COL) : imageCollage(col) {}
 	~bitCollage();
+
+	bitCollage operator+(bitCollage& collage);
+	bitCollage operator+(int addID);
 
 	vector<int> getDisplay();
 	bool replaceImage(int imgID);

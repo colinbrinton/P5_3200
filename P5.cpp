@@ -6,6 +6,9 @@
 #include <iostream>
 
 void displayCollage(vector<int> imgCol);
+imageCollage operator+(int addID, imageCollage& imgCol);
+cyclicCollage operator+(int addID, cyclicCollage& imgCol);
+bitCollage operator+(int addID, bitCollage& imgCol);
 
 int main()
 {
@@ -35,6 +38,75 @@ int main()
 	cout << endl << endl;
 
 	displayCollage(intCollage.getDisplay());
+
+	imageCollage intCollage2 = testInt + testCollage3;
+
+	cout << endl << endl;
+
+	displayCollage(intCollage2.getDisplay());
+
+	//Cyclic
+	cout << endl << "CYCLIC:";
+	cout << endl << endl;
+
+	cyclicCollage cyclicCollage1(testDisplay1);
+	cyclicCollage cyclicCollage2(testDisplay2);
+
+	cyclicCollage sumCyclic = cyclicCollage1 + cyclicCollage2;
+	cyclicCollage sumCyclic2 = cyclicCollage2 + cyclicCollage1;
+
+	displayCollage(sumCyclic.getOriDisplay());
+
+	cout << endl << endl;
+
+	displayCollage(sumCyclic2.getOriDisplay());
+
+	cout << endl << endl;
+
+	cyclicCollage testCyclic3(testDisplay1);
+	cyclicCollage intCyclic = testCyclic3 + testInt;
+
+	cout << endl << endl;
+
+	displayCollage(intCyclic.getOriDisplay());
+
+	cyclicCollage intCyclic2 = testInt + testCyclic3;
+
+	cout << endl << endl;
+
+	displayCollage(intCyclic2.getOriDisplay());
+
+	//Bit
+	cout << endl << "BIT:";
+	cout << endl << endl;
+
+	bitCollage testBit1(testDisplay1);
+	bitCollage testBit2(testDisplay2);
+
+	bitCollage sumBit = testBit1 + testBit2;
+	bitCollage sumBit2 = testBit2 + testBit1;
+
+	displayCollage(sumBit.getFullDisplay());
+
+	cout << endl << endl;
+
+	displayCollage(sumBit2.getFullDisplay());
+
+	cout << endl << endl;
+
+	bitCollage testBit3(testDisplay1);
+	bitCollage intBit = testBit3 + testInt;
+
+	cout << endl << endl;
+
+	displayCollage(intBit.getFullDisplay());
+
+	bitCollage intBit2 = testInt + testBit3;
+
+	cout << endl << endl;
+
+	displayCollage(intBit2.getFullDisplay());
+
 
 	cin.get();
 
@@ -67,7 +139,24 @@ void displayCollage(vector<int> imgCol)
 
 imageCollage operator+(int addID, imageCollage& imgCol)
 {
-	imageCollage sumImgCol(*this);
-	sumImgCol.addID(addID);
-	return sumImgCol;
+	vector<int> intElement = { addID };
+	imageCollage newCol(intElement);
+	imageCollage sumCol = newCol + imgCol;
+	return sumCol;
+}
+
+cyclicCollage operator+(int addID, cyclicCollage& imgCol)
+{
+	vector<int> intElement = { addID };
+	cyclicCollage newCol(intElement);
+	cyclicCollage sumCol = newCol + imgCol;
+	return sumCol;
+}
+
+bitCollage operator+(int addID, bitCollage& imgCol)
+{
+	vector<int> intElement = { addID };
+	bitCollage newCol(intElement);
+	bitCollage sumCol = newCol + imgCol;
+	return sumCol;
 }

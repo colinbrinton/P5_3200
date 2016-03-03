@@ -50,3 +50,32 @@ vector<int> cyclicCollage::getDisplay()
 		return nullDisplay;
 	}
 }
+
+cyclicCollage cyclicCollage::operator+(cyclicCollage& collage)
+{
+	int newSize = collage.displaySize + this->displaySize;
+	vector<int> concatCollage = this->getOriDisplay();
+
+	for (int index = 0; index < collage.displaySize; index++)
+		concatCollage.push_back(collage.getOriDisplay()[index]);
+
+	cyclicCollage sumImgCol(concatCollage, this->shift);
+	return sumImgCol;
+}
+
+vector<int> cyclicCollage::getOriDisplay()
+{
+	vector<int> display;
+	for (unsigned index = 0; index < collage.size(); ++index)
+	{
+		display.push_back(collage[index]);
+	}
+	return display;
+}
+
+cyclicCollage cyclicCollage::operator+(int addID)
+{
+	cyclicCollage sumImgCol(*this);
+	sumImgCol.addID(addID);
+	return sumImgCol;
+}

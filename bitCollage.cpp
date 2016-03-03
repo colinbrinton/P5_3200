@@ -99,3 +99,32 @@ bool bitCollage::replaceImage(int imgID)
 	}
 	return false;
 }
+
+vector<int> bitCollage::getFullDisplay()
+{
+	vector<int> display;
+	for (unsigned index = 0; index < collage.size(); ++index)
+	{
+		display.push_back(collage[index]);
+	}
+	return display;
+}
+
+bitCollage bitCollage::operator+(bitCollage& collage)
+{
+	//int newSize = collage.displaySize + this->displaySize;
+	vector<int> concatCollage = this->getFullDisplay();
+
+	for (int index = 0; index < collage.displaySize; index++)
+		concatCollage.push_back(collage.getFullDisplay()[index]);
+
+	bitCollage sumImgCol(concatCollage);
+	return sumImgCol;
+}
+
+bitCollage bitCollage::operator+(int addID)
+{
+	bitCollage sumImgCol(*this);
+	sumImgCol.addID(addID);
+	return sumImgCol;
+}
